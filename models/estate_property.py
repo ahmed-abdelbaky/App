@@ -2,7 +2,7 @@ from odoo import models, fields, api
 
 
 class estateProperty(models.Model):
-    _name = estate.property
+    _name = 'estate.property'
     _description = 'estate property'
 
     name = fields.Char(required= True)
