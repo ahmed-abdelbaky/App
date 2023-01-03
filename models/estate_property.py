@@ -26,7 +26,7 @@ class estateProperty(models.Model):
             ('east', 'East'),
             ('west', 'West')
         ]
-    )
+     )
     active = fields.Boolean('Active')
     state = fields.Selection(
         [
@@ -35,5 +35,5 @@ class estateProperty(models.Model):
             ('offer_accepted', 'Offer Accepted'),
             ('sold_and_cancel', 'Sold and Cancel')
         ],
-        default='New', required=True, copy=False, string='Status'
-    )
+        default='new', required=True, copy=False, string='Status'
+        )
