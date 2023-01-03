@@ -7,13 +7,13 @@ class estateProperty(models.Model):
     _name = 'estate.property'
     _description = 'estate property'
 
-    name = fields.Char("Name",required=True)
+    name = fields.Char("Name", required=True)
     description = fields.Text("Description")
     postcode = fields.Char("Postcode")
     date_availability = fields.Date( 'Available From', default=lambda self: fields.Datetime.now() + relativedelta(months=+3), copy=False)
     expected_price = fields.Float('Expected Price',required=True)
     selling_price = fields.Float('Selling Price',readonly=True, copy=False)
-    bedrooms = fields.Integer("Bedrooms",default='2')
+    bedrooms = fields.Integer("Bedrooms", default='2')
     living_area = fields.Integer('Living Area')
     facades = fields.Integer("Facades")
     garage = fields.Boolean("Garage")
@@ -25,7 +25,7 @@ class estateProperty(models.Model):
             ('south', 'South'),
             ('east', 'East'),
             ('west', 'West')
-        ],string="Garden Orientation"
+        ], string="Garden Orientation"
      )
     active = fields.Boolean('Active')
     state = fields.Selection(
