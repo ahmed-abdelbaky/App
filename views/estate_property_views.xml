@@ -68,7 +68,14 @@
             <field name="model">estate.property</field>
             <field name="arch" type="xml">
                 <search >
-                    <field name="name"/>
+                    <field name="state"/>
+                    <field name="postcode"/>
+                    <filter string="display available properties"
+                            name="display_available_properties"
+                            domain="['|', ('state', '=', 'new'), ('state', '=', 'offer_received')]"/>
+                    <filter string="ability to group result"
+                            name="group_result"
+                            context="{'group_by':'postcode'}"/>
                 </search>
             </field>
         </record>
