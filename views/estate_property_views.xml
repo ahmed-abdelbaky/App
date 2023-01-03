@@ -34,7 +34,7 @@
                 <form >
                     <sheet>
                         <group >
-                            <field name="name"/>
+                            <field name="name" style="font-size:30px; font-color:black"/>
                             <group>
                                 <field name="postcode"/>
                                 <field name="date_availability"/>
@@ -61,6 +61,15 @@
                         </notebook>
                     </sheet>
                 </form>
+            </field>
+        </record>
+        <record id="real_estate_search" model="ir.ui.view">
+            <field name="name">Real Estate Search</field>
+            <field name="model">estate.property</field>
+            <field name="arch" type="xml">
+                <search >
+                    <field name="name"/>
+                </search>
             </field>
         </record>
     </data>
