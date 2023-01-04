@@ -34,8 +34,9 @@
                 <form >
                     <sheet>
                         <group >
-                            <field name="name" style="font-size:30px; font-color:black"/>
                             <group>
+                               <field name="name" style="font-size:30px; font-color:black"/>
+                                <field name="type_id"/>
                                 <field name="postcode"/>
                                 <field name="date_availability"/>
                             </group>
@@ -56,6 +57,12 @@
                                     <field name="garden_orientation"/>
                                     <field name="active"/>
                                     <field name="state"/>
+                                </group>
+                            </page>
+                            <page string="Other Info">
+                                <group>
+                                    <field name="sales_person"/>
+                                    <field name="partner_id"/>
                                 </group>
                             </page>
                         </notebook>
