@@ -1,5 +1,6 @@
 <odoo>
     <menuitem id="estate_tage_menuitem" name="Property Tags"
-    parent="estate_menuitem"
+              parent="estate_property_type_menuitem_setting"
+              action="estate_tage_action"
     />
 </odoo>
