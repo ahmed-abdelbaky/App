@@ -5,7 +5,7 @@
                  />
         <menuitem id="estate_property_type_menuitem" name="Property Type"
                   parent="estate_property_type_menuitem_setting"
-                  action="estate_property_action"
+                  action="estate_type_action"
         />
 
 </odoo>
