@@ -1,0 +1,5 @@
+<odoo>
+    <menuitem id="estate_tage_menuitem" name="Property Tags"
+    parent="estate_menuitem"
+    />
+</odoo>
