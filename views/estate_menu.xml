@@ -3,10 +3,11 @@
         <menuitem id="estate_menuitem"  name="Real Estate"/>
         <menuitem id="estate_menuitem1" name="Advertisement "
                   parent="estate_menuitem"
-                  action="estate_property_action"
+
                  />
         <menuitem id="estate_menuitem2" name="Properties"
                   parent="estate_menuitem1"
+                  action="estate_property_action"
                   />
 
 
