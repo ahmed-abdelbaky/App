@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 # from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
@@ -10,9 +10,10 @@ class estateProperty(models.Model):
     name = fields.Char("Name", required=True)
     description = fields.Text("Description")
     postcode = fields.Char("Postcode")
-    date_availability = fields.Date( 'Available From', default=lambda self: fields.Datetime.now() + relativedelta(months=+3), copy=False)
-    expected_price = fields.Float('Expected Price',required=True)
-    selling_price = fields.Float('Selling Price',readonly=True, copy=False)
+    date_availability = fields.Date('Available From',
+                                    default=lambda self: fields.Datetime.now() + relativedelta(months=+3), copy=False)
+    expected_price = fields.Float('Expected Price', required=True)
+    selling_price = fields.Float('Selling Price', readonly=True, copy=False)
     bedrooms = fields.Integer("Bedrooms", default='2')
     living_area = fields.Integer('Living Area')
     facades = fields.Integer("Facades")
@@ -26,7 +27,7 @@ class estateProperty(models.Model):
             ('east', 'East'),
             ('west', 'West')
         ], string="Garden Orientation"
-     )
+    )
     active = fields.Boolean('Active')
     state = fields.Selection(
         [
@@ -36,9 +37,15 @@ class estateProperty(models.Model):
             ('sold_and_cancel', 'Sold and Cancel')
         ],
         default='new', required=True, copy=False, string='Status'
-        )
+    )
     type_id = fields.Many2one('estate.property.type', string='Property Type')
     sales_person = fields.Char('Sales Person', default=lambda self: self.env.user.name, readonly=True)
     partner_id = fields.Many2one('res.partner', string='Buyer')
     tag_ids = fields.Many2many('estate.property.tag', string='Tag')
     offer_ids = fields.One2many('estate.property.offer', 'property_id', string="Offers")
+    total_area = fields.Integer("Total Area", compute="_sum_total_area")
+
+    @api.depends("living_area", 'garden_area')
+    def _sum_total_area(self):
+        for record in self:
+            record.total_area = record.garden_area + record.living_area
