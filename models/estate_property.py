@@ -63,3 +63,12 @@ class estateProperty(models.Model):
             else:
                 rec.best_price = 0
         # print("partner_id ", self.mapped('partner_id'))
+
+    @api.onchange('garden')
+    def on_change(self):
+        if self.garden == True:
+            self.garden_area = 10
+            self.garden_orientation = 'north'
+        else:
+            self.garden_orientation = ''
+            self.garden_area = ''
