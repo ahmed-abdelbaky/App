@@ -28,7 +28,7 @@ class estateProperty(models.Model):
             ('west', 'West')
         ], string="Garden Orientation"
     )
-    active = fields.Boolean('Active')
+    active = fields.Boolean('Active', default=True)
     state = fields.Selection(
         [
             ('new', 'New'),
@@ -43,9 +43,23 @@ class estateProperty(models.Model):
     partner_id = fields.Many2one('res.partner', string='Buyer')
     tag_ids = fields.Many2many('estate.property.tag', string='Tag')
     offer_ids = fields.One2many('estate.property.offer', 'property_id', string="Offers")
-    total_area = fields.Integer("Total Area", compute="_sum_total_area")
+    total_area = fields.Integer("Total Area", compute="_compute_total_area")
+    best_price = fields.Integer("Best Price", compute="_compute_best_price")
 
     @api.depends("living_area", 'garden_area')
-    def _sum_total_area(self):
+    def _compute_total_area(self):
         for record in self:
             record.total_area = record.garden_area + record.living_area
+
+    @api.depends('offer_ids')
+    def _compute_best_price(self):
+        for rec in self:
+            if rec.offer_ids:
+                value = rec.offer_ids.mapped('price')
+                # print("offer_ids ", rec.offer_ids)
+                # print("offer_ids ", rec.mapped('partner_id'), rec.partner_id)
+                # print("value ", value)
+                rec.best_price = max(value)
+            else:
+                rec.best_price = 0
+        # print("partner_id ", self.mapped('partner_id'))
