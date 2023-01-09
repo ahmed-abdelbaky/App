@@ -6,10 +6,12 @@
             <field name="arch" type="xml">
                 <tree>
                     <field name="price"/>
-                    <field name="status"/>
                     <field name="partner_id"/>
                     <field name="validity"/>
                     <field name="date_deadline"/>
+                    <button name="button_accept" type="object"  class="fa fa-check"/>
+                    <button name="button_refuse" type="object"  class="fa fa-times"/>
+                    <field name="state"/>
                 </tree>
             </field>
         </record>
@@ -19,12 +21,13 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
+
                         <group>
                             <field name="price"/>
                             <field name="partner_id"/>
                             <field name="validity"/>
                             <field name="date_deadline"/>
-                            <field name="status"/>
+                            <field name="state"/>
 
                         </group>
                     </sheet>
