@@ -40,9 +40,14 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
+                        <header>
+                            <button name="button_sold" type="object" string="Sold"/>
+                            <button name="button_cancel" type="object" string="Cancel"/>
+                        </header>
                         <group>
                             <group>
                                 <field name="name" style="font-size:30px; font-color:black"/>
+                                <field name="state"/>
                                 <field name="tag_ids" widget="many2many_tags"/>
                                 <field name="type_id"/>
                                 <field name="postcode"/>
@@ -67,7 +72,7 @@
                                     <field name="garden_area"/>
                                     <field name="garden_orientation"/>
                                     <field name="active"/>
-                                    <field name="state"/>
+
                                     <field name="total_area"/>
                                 </group>
                             </page>
