@@ -7,7 +7,7 @@ class estatePropertyOffer(models.Model):
     _name = 'estate.property.offer'
 
     price = fields.Float("Price")
-    status = fields.Selection(
+    state = fields.Selection(
         [
             ('accepted', 'Accepted'),
             ('refused', 'Refused')
@@ -16,7 +16,7 @@ class estatePropertyOffer(models.Model):
     partner_id = fields.Many2one("res.partner", string="Partner")
     property_id = fields.Many2one("estate.property", string="Property")
     validity = fields.Integer("Validity", default='7')
-    date_deadline = fields.Date('Date Deadline', compute="_compute_date", inverse='_inverse_date')
+    date_deadline = fields.Date('Deadline', compute="_compute_date", inverse='_inverse_date')
 
     @api.depends('validity')
     def _compute_date(self):
@@ -26,4 +26,23 @@ class estatePropertyOffer(models.Model):
 
     def _inverse_date(self):
         for record in self:
-            record.date_deadline = record.datetime()
+            record.date_deadline = datetime.now().date()
+
+    def button_accept(self):
+        for record in self:
+            record.property_id.selling_price = record.price
+            record.property_id.partner_id = record.partner_id
+            record.state = 'accepted'
+
+    def button_refuse(self):
+        for record in self:
+            record.state = 'refused'
+            record.property_id = False
+
+
+
+
+
+
+
+
