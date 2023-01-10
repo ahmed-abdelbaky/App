@@ -21,7 +21,7 @@ class estatePropertyOffer(models.Model):
     @api.depends('validity')
     def _compute_date(self):
         for record in self:
-            record.date_deadline = self.env.user.create_date + relativedelta(days=record.validity)
+            record.date_deadline = datetime.now().date() + relativedelta(days=record.validity)
            # print('record.date_deadline', record.date_deadline)
 
     def _inverse_date(self):
@@ -39,9 +39,9 @@ class estatePropertyOffer(models.Model):
             record.state = 'refused'
             record.property_id = False
 
-
-
-
+    _sql_constraints = [
+        ('check_price', 'CHECK(price > 0)', 'THE VALUE OF PRICE MUST BE POSITIVE')
+    ]
 
 
 
