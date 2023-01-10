@@ -82,5 +82,10 @@ class estateProperty(models.Model):
     def button_cancel(self):
         for record in self:
             record.state = 'sold_and_cancel'
-            #raise UserError('A canceled property cannot be set as sold.')
+            # raise UserError('A canceled property cannot be set as sold.')
 
+    _sql_constraints = [
+        ('check_positive_expected_price', 'CHECK(expected_price > 0 )', 'Expected Price must be Positive'),
+        ('check_positive_selling_price', 'CHECK(selling_price > 0 )', 'Selling Price must be positive')
+
+    ]
