@@ -2,6 +2,7 @@ from odoo import models, fields, api
 # from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from odoo.exceptions import UserError
+from odoo.tools import float_compare
 
 
 class estateProperty(models.Model):
@@ -89,3 +90,11 @@ class estateProperty(models.Model):
         ('check_positive_selling_price', 'CHECK(selling_price > 0 )', 'Selling Price must be positive')
 
     ]
+
+    @api.constrains('expected_price', 'selling_price')
+    def _check_selling_price(self):
+        for record in self:
+            if record.selling_price:
+                amount = 90 * record.expected_price / 100
+                if float_compare(record.selling_price, amount, 2) < 0:
+                    raise UserError('selling price cannot be lower than 90% of the expected price.')
