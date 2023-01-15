@@ -8,7 +8,7 @@ from odoo.tools import float_compare
 class estateProperty(models.Model):
     _name = 'estate.property'
     _description = 'estate property'
-
+    _order = "id desc"
     name = fields.Char("Title", required=True)
     description = fields.Text("Description")
     postcode = fields.Char("Postcode")
