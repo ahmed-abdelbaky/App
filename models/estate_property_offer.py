@@ -5,6 +5,7 @@ from dateutil.relativedelta import relativedelta
 
 class estatePropertyOffer(models.Model):
     _name = 'estate.property.offer'
+    _order = "price desc"
 
     price = fields.Float("Price")
     state = fields.Selection(
