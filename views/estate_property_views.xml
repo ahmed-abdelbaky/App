@@ -43,11 +43,12 @@
                         <header>
                             <button name="button_sold" type="object" string="Sold" class="btn btn-primary"/>
                             <button name="button_cancel" type="object" string="Cancel" class="btn btn-primary"/>
+                            <field name="state" widget="statusbar" statusbar_visible="new,offer_received,offer_accepted,sold_and_cancel"/>
                         </header>
                         <group>
                             <group>
                                 <field name="name" style="font-size:30px; font-color:black"/>
-                                <field name="state"/>
+<!--                                <field name="state"/>-->
                                 <field name="tag_ids" widget="many2many_tags"/>
                                 <field name="type_id"/>
                                 <field name="postcode"/>
