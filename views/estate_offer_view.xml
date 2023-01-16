@@ -10,7 +10,7 @@
                     <field name="validity"/>
                     <field name="date_deadline"/>
                     <button name="button_accept" type="object"  class="fa fa-check" attrs="{'invisible' : [('state','in',('accepted','refused'))]}"/>
-                    <button name="button_refuse" type="object"  class="fa fa-times" attrs="{'invisible' : [('state','=',('accepted','refused'))]}"/>
+                    <button name="button_refuse" type="object"  class="fa fa-times" attrs="{'invisible' : [('state','in',('accepted','refused'))]}"/>
                     <field name="state"/>
                 </tree>
             </field>
