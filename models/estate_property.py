@@ -77,12 +77,15 @@ class estateProperty(models.Model):
 
     def button_sold(self):
         for record in self:
-            record.state = 'new'
-            raise UserError('a sold property cannot be canceled.')
+
+            if record.state == ' sold_and_cancel':
+                raise UserError('a sold property cannot be canceled.')
+            else:
+                record.state = 'sold_and_cancel'
 
     def button_cancel(self):
         for record in self:
-            record.state = 'sold_and_cancel'
+            record.state = 'new'
             # raise UserError('A canceled property cannot be set as sold.')
 
     _sql_constraints = [
