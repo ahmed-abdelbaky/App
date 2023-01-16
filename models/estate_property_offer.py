@@ -34,6 +34,7 @@ class estatePropertyOffer(models.Model):
             record.property_id.selling_price = record.price
             record.property_id.partner_id = record.partner_id
             record.state = 'accepted'
+            record.property_id.state = 'offer_accepted'
 
     def button_refuse(self):
         for record in self:
