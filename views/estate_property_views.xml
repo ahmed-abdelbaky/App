@@ -47,10 +47,10 @@
                         </header>
                         <group>
                             <group>
-                                <field name="name" style="font-size:30px; font-color:black" nolabel="1"/>
+                                <field name="name" style="font-size:30px; font-color:black" />
 <!--                                <field name="state"/>-->
-                                <field name="tag_ids" widget="many2many_tags" nolabel="1"/>
-                                <field name="type_id"/>
+                                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}" />
+                                <field name="type_id" widget="selection"/>
                                 <field name="postcode"/>
                                 <field name="date_availability"/>
                             </group>
