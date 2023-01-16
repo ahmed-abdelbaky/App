@@ -41,8 +41,9 @@
                 <form>
                     <sheet>
                         <header>
-                            <button name="button_sold" type="object" string="Sold" class="btn btn-primary"/>
-                            <button name="button_cancel" type="object" string="Cancel" class="btn btn-primary"/>
+                            <button name="button_sold" type="object" string="Sold" class="btn btn-primary" states="new,offer_received,offer_accepted" />
+                            <button name="button_cancel" type="object" string="Cancel" class="btn btn-primary" states="new,offer_received,offer_accepted" />
+
                             <field name="state" widget="statusbar" statusbar_visible="new,offer_received,offer_accepted,sold_and_cancel"/>
                         </header>
                         <group>
