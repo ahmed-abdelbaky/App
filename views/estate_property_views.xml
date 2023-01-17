@@ -110,6 +110,10 @@
                     <filter string="ability to group result"
                             name="group_result"
                             context="{'group_by':'postcode'}"/>
+                    <field string="search by living area "
+                            name="living_area"
+                            filter_domain="['|', ('living_area', '=', self), ('living_area', '&gt;', self)]"
+                            />
                 </search>
             </field>
         </record>
