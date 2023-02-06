@@ -101,3 +101,10 @@ class estateProperty(models.Model):
                 amount = 90 * record.expected_price / 100
                 if float_compare(record.selling_price, amount, 2) < 0:
                     raise UserError('selling price cannot be lower than 90% of the expected price.')
+
+    def unlink(self):
+        for record in self:
+            if record.state not in ['new', 'sold_and_cancel']:
+                raise UserError('You Cant delete this property')
+
+        super().unlink()
