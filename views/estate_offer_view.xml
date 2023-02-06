@@ -1,5 +1,10 @@
 <odoo>
     <data>
+        <record id="offer_action" model="ir.actions.act_window">
+            <field name="name">offer.action</field>
+            <field name="res_model">estate.property.offer</field>
+            <field name="domain">[('property_type_id','=',active_id )]</field>
+        </record>
         <record id="offer_list" model="ir.ui.view">
             <field name="name">Offer List</field>
             <field name="model">estate.property.offer</field>
@@ -12,6 +17,7 @@
                     <button name="button_accept" type="object"  class="fa fa-check" attrs="{'invisible' : [('state','in',('accepted','refused'))]}"/>
                     <button name="button_refuse" type="object"  class="fa fa-times" attrs="{'invisible' : [('state','in',('accepted','refused'))]}"/>
                     <field name="state" invisible="1"/>
+                    <field name="property_type_id"/>
                 </tree>
             </field>
         </record>
