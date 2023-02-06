@@ -11,6 +11,7 @@
         'views/estate_tage_view.xml',
         'views/estate_tage_menuitem.xml',
         'views/estate_offer_view.xml',
+        'views/user_inherit.xml',
 
     ],
 }
